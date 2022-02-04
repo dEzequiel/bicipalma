@@ -10,4 +10,10 @@ public class BicicletaTest {
         assertEquals(1, bici.getId());
     }
 
+    @Test 
+    public void toStringMethod() {
+        Bicicleta bici = new Bicicleta(1);
+        System.out.print(bici.getId());
+    }
+
 }
