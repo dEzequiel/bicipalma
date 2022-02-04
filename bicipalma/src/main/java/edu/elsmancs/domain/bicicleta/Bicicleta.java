@@ -12,4 +12,9 @@ public class Bicicleta implements Movil{
         return id;
     }
 
+    @Override
+    public String toString() {
+        return Integer.toString(getId());
+    }
+
 }
