@@ -14,6 +14,10 @@ public class TarjetaUsuario implements Autenticacion{
         return activada;
     }
     @Override
+    public void setActivada(boolean estado)  {
+        activada = true;
+    }
+    @Override
     public String getId() {
         return id;
     }
