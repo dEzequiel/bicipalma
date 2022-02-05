@@ -9,7 +9,7 @@ public class Bicicleta implements Movil{
 
     @Override
     public int getId(){
-        return id;
+        return this.id;
     }
 
     @Override

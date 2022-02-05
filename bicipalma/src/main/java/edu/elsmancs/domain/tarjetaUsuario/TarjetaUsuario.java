@@ -11,14 +11,14 @@ public class TarjetaUsuario implements Autenticacion{
 
     @Override
     public boolean isActivada() {
-        return activada;
+        return this.activada;
     }
     @Override
     public void setActivada(boolean estado)  {
-        activada = true;
+        this.activada = true;
     }
     @Override
     public String getId() {
-        return id;
+        return this.id;
     }
 }
