@@ -10,6 +10,13 @@ public class TarjetaUsuarioTest {
         TarjetaUsuario tarjetaUsuario = new TarjetaUsuario("Eze", false);
         assertEquals("Eze", tarjetaUsuario.getId());
         assertEquals(false, tarjetaUsuario.isActivada());
-    }   
+    }  
+
+    @Test
+    public void setTarjetaUsuario()  {
+        TarjetaUsuario tarjetaUsuario = new TarjetaUsuario("Eze", false);
+        tarjetaUsuario.setActivada(true);
+        assertEquals(true, tarjetaUsuario.isActivada());
+    }
 
 }
