@@ -19,4 +19,10 @@ public class TarjetaUsuarioTest {
         assertEquals(true, tarjetaUsuario.isActivada());
     }
 
+    @Test 
+    public void toStringMethod() {
+        TarjetaUsuario tarjetaUsuario = new TarjetaUsuario("Eze", false);
+        System.out.print(tarjetaUsuario.getId());
+    }
+
 }
