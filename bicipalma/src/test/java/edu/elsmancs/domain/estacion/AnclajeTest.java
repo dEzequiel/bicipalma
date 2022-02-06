@@ -21,12 +21,21 @@ public class AnclajeTest {
     public void liberarBici() {
         Anclaje anclajeTest = new Anclaje();
         Bicicleta bici = new Bicicleta(1);
-        
+
         anclajeTest.anclarBici(bici);
         anclajeTest.liberarBici();
 
         assertEquals(false, anclajeTest.isOcupado());
         assertEquals(null, anclajeTest.getBici());
 
+    }
+
+    @Test 
+    public void toStringMethod() {
+        Anclaje anclajeTest = new Anclaje();
+        Bicicleta bici = new Bicicleta(1);
+        anclajeTest.anclarBici(bici);
+
+        System.out.print(anclajeTest.isOcupado());
     }
 }
