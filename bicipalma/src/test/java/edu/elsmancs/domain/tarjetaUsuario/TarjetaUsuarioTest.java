@@ -1,7 +1,6 @@
 package edu.elsmancs.domain.tarjetaUsuario;
 import static org.junit.Assert.*;
 import org.junit.Test;
-import org.junit.experimental.theories.suppliers.TestedOn;
 
 public class TarjetaUsuarioTest {
     
