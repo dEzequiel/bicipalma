@@ -1,5 +1,8 @@
 package edu.elsmancs.domain.estacion;
 
+import java.util.concurrent.ThreadLocalRandom;
+
+import edu.elsmancs.domain.bicicleta.Bicicleta;
 import edu.elsmancs.domain.bicicleta.Movil;
 
 public class Anclajes {
@@ -40,4 +43,11 @@ public class Anclajes {
     public Movil getBiciAt(int numeroAnclaje) {
         return this.anclajes[numeroAnclaje].getBici();
     }
+
+    public int seleccionarAnclaje() {
+        Integer numeroAnclaje = ThreadLocalRandom.current().nextInt(numAnclajes());
+        return numeroAnclaje;
+    }
+
+
 }
