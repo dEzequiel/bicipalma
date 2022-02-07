@@ -1,7 +1,6 @@
 package edu.elsmancs.domain.estacion;
 
 import edu.elsmancs.domain.bicicleta.Movil;
-
 public class Anclaje {
     
 
