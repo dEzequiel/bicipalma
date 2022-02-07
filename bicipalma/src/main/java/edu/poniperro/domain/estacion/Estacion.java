@@ -88,10 +88,13 @@ public class Estacion {
                 anclajes.liberarAnclaje(posicion); // set anclaje
                 biciRetirada = true;
             } else; }
+        else {
+            System.out.println("Tarjeta de usuario inactiva :(");
+        }
 
 
 
         }
     }
 
-}
+
