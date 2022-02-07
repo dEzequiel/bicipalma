@@ -36,5 +36,8 @@ public class Anclajes {
     public void liberarAnclaje(int numeroAnclaje) {
         this.anclajes[numeroAnclaje].liberarBici();
     }
- 
+
+    public Movil getBiciAt(int numeroAnclaje) {
+        return this.anclajes[numeroAnclaje].getBici();
+    }
 }
