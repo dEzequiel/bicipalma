@@ -23,7 +23,9 @@ public class Estacion {
         return this.direccion;
     }
 
-    
+    private Anclajes[] anclajes() {
+        return this.anclajes.anclajes();
+    }
 
 
 }
