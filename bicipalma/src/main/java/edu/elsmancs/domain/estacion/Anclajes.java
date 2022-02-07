@@ -2,7 +2,6 @@ package edu.elsmancs.domain.estacion;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-import edu.elsmancs.domain.bicicleta.Bicicleta;
 import edu.elsmancs.domain.bicicleta.Movil;
 
 public class Anclajes {
@@ -20,8 +19,8 @@ public class Anclajes {
         }
     }
 
-    public Anclajes[] anclajes() {
-        return this.anclajes();
+    public Anclaje[] anclajes() {
+        return this.anclajes;
     }
 
     public int numAnclajes() {
