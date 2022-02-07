@@ -49,6 +49,11 @@ public class Estacion {
                             + " anclada en el anclaje " + numeroAnclaje);
     }
 
+    private void mostrarBicicleta(Movil bicicleta, int numeroAnclaje) {
+        System.out.println("bicicleta retirada: " + bicicleta.getId() 
+        + " del anclaje: " + numeroAnclaje);
+    }
+
     public void anclarBicicleta(Movil bicicleta) {
 
         int posicion = 0;
@@ -68,6 +73,25 @@ public class Estacion {
 
     public boolean leerTarjetaUsuario(Autenticacion tarjetaUsuario) {
         return tarjetaUsuario.isActivada();
+    }
+
+    public void retirarBicicleta(Autenticacion tarjetaUsuario) {
+        if (leerTarjetaUsuario(tarjetaUsuario)) {
+            boolean biciRetirada = false;
+
+            int posicion = anclajes.seleccionarAnclaje();
+			int numeroAnclaje = posicion + 1;
+
+
+            if (anclajes.isAnclajeOcupado(posicion)) { // leer anclaje
+                mostrarBicicleta(anclajes.getBiciAt(posicion), numeroAnclaje);
+                anclajes.liberarAnclaje(posicion); // set anclaje
+                biciRetirada = true;
+            } else; }
+
+
+
+        }
     }
 
 }
