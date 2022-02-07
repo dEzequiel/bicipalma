@@ -64,11 +64,10 @@ public class Estacion {
             }
             numeroAnclaje++;
         }
+    }
 
-        
-
-
-
+    public boolean leerTarjetaUsuario(Autenticacion tarjetaUsuario) {
+        return tarjetaUsuario.isActivada();
     }
 
 }
