@@ -1,7 +1,6 @@
 package edu.elsmancs.domain.estacion;
 import static org.junit.Assert.*;
 
-import org.hamcrest.core.IsInstanceOf;
 import org.junit.Test;
 
 import edu.elsmancs.domain.bicicleta.Bicicleta;
@@ -43,5 +42,16 @@ public class AnclajesTest {
         assertEquals(false, anclajes.isAnclajeOcupado(1));
         assertEquals(false, anclajes.isAnclajeOcupado(2));
         
+    }
+
+    @Test
+    public void getBiciAt() {
+        Anclajes anclajes = new Anclajes(3);
+        Bicicleta bici = new Bicicleta(1);
+
+        anclajes.ocuparAnclaje(1, bici);
+
+        assertEquals(bici, anclajes.getBiciAt(1));
+        assertEquals(null, anclajes.getBiciAt(2));
     }
 }
