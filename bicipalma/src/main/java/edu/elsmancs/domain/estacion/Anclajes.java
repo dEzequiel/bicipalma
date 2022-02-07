@@ -15,5 +15,9 @@ public class Anclajes {
         }
     }
 
-    
+    public Anclajes[] anclajes() {
+        return this.anclajes();
+    }
+
+    public 
 }
