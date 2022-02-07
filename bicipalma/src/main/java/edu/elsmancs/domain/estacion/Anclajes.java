@@ -29,5 +29,12 @@ public class Anclajes {
         this.anclajes[numeroAnclaje].anclarBici(bicicleta);
     }
 
+    public boolean isAnclajeOcupado(int numeroAnclaje) {
+        return this.anclajes[numeroAnclaje].isOcupado();
+    }
+
+    public void liberarAnclaje(int numeroAnclaje) {
+        this.anclajes[numeroAnclaje].liberarBici();
+    }
  
 }
