@@ -1,5 +1,7 @@
 package edu.elsmancs.domain.estacion;
 
+import edu.elsmancs.domain.bicicleta.Movil;
+
 public class Anclajes {
 
     private final Anclaje[] anclajes;
@@ -21,5 +23,11 @@ public class Anclajes {
 
     public int numAnclajes() {
         return this.anclajes.length;
-    } 
+    }
+
+    public void ocuparAnclaje(int numeroAnclaje, Movil bicicleta) {
+        this.anclajes[numeroAnclaje].anclarBici(bicicleta);
+    }
+
+ 
 }
