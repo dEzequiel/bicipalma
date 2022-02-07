@@ -23,12 +23,26 @@ public class Estacion {
         return this.direccion;
     }
 
-    private Anclajes[] anclajes() {
+    private Anclaje[] anclajes() {
         return this.anclajes.anclajes();
     }
 
     private int numAnclajes() {
         return this.anclajes.numAnclajes();
+    }
+
+    public void consultarEstacion() {
+        System.out.print(this);
+    }
+
+    public int anclajesLibres() {
+        int numAnclajesLibres = 0;
+
+        for (Anclaje anclaje : anclajes()) {
+            numAnclajesLibres = anclaje.isOcupado()? numAnclajesLibres: ++numAnclajesLibres;
+        }
+
+        return numAnclajesLibres;
     }
 
 
