@@ -1,8 +1,9 @@
 package edu.elsmancs.domain.estacion;
 
+import edu.elsmancs.domain.bicicleta.Movil;
 import edu.elsmancs.domain.tarjetaUsuario.Autenticacion;
 
-public class Estacion implements Autenticacion{
+public class Estacion {
     
     private final int id;
     private final String direccion;
@@ -14,6 +15,9 @@ public class Estacion implements Autenticacion{
         this.anclajes = new Anclajes(numeroAnclajes);
     }
 
+    public int getId() {
+        return this.id;
+    }
     
 
 
