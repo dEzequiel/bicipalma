@@ -19,6 +19,11 @@ public class Estacion {
         return this.id;
     }
     
+    public String getString() {
+        return this.direccion;
+    }
+
+    
 
 
 }
