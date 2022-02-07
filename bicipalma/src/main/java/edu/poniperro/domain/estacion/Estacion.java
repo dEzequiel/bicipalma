@@ -49,7 +49,21 @@ public class Estacion {
                             + " anclada en el anclaje " + numeroAnclaje);
     }
 
+    public void anclarBicicleta(Movil bicicleta) {
 
+        int posicion = 0;
+        int numeroAnclaje = 1;
+
+        for(Anclaje anclaje : anclajes()) {
+            if(!anclaje.isOcupado()) {
+                anclajes.ocuparAnclaje(posicion, bicicleta);
+                mostrarAnclaje(bicicleta, numeroAnclaje);
+                break;
+            } else {
+                posicion++;
+            }
+            numeroAnclaje++;
+        }
 
         
 
