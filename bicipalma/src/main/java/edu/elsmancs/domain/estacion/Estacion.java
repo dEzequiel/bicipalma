@@ -15,16 +15,20 @@ public class Estacion {
         this.anclajes = new Anclajes(numeroAnclajes);
     }
 
-    public int getId() {
+    private int getId() {
         return this.id;
     }
     
-    public String getString() {
+    private String getString() {
         return this.direccion;
     }
 
     private Anclajes[] anclajes() {
         return this.anclajes.anclajes();
+    }
+
+    private int numAnclajes() {
+        return this.anclajes.numAnclajes();
     }
 
 
