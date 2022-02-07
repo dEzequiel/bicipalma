@@ -44,5 +44,17 @@ public class Estacion {
         return numAnclajesLibres;
     }
 
+    private void mostrarAnclaje(Movil bicicleta, int numeroAnclaje) {
+        System.out.println("bicicleta " + bicicleta.getId() 
+                            + " anclada en el anclaje " + numeroAnclaje);
+    }
+
+
+
+        
+
+
+
+    }
 
 }
