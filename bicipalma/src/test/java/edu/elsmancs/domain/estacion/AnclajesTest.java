@@ -20,14 +20,28 @@ public class AnclajesTest {
         Bicicleta bici = new Bicicleta(1);
         Bicicleta bici2 = new Bicicleta(1);
 
-        
         anclajes.ocuparAnclaje(1, bici);
         anclajes.ocuparAnclaje(2, bici2);
 
         assertEquals(true, anclajes.isAnclajeOcupado(1));
         assertEquals(true, anclajes.isAnclajeOcupado(2));
+        
+    }
 
+    @Test
+    public void liberarAnclaje() {
+        Anclajes anclajes = new Anclajes(3);
+        Bicicleta bici = new Bicicleta(1);
+        Bicicleta bici2 = new Bicicleta(1);
 
+        anclajes.ocuparAnclaje(1, bici);
+        anclajes.ocuparAnclaje(2, bici2);
+
+        anclajes.liberarAnclaje(1);
+        anclajes.liberarAnclaje(2);
+
+        assertEquals(false, anclajes.isAnclajeOcupado(1));
+        assertEquals(false, anclajes.isAnclajeOcupado(2));
         
     }
 }
