@@ -92,9 +92,25 @@ public class Estacion {
             System.out.println("Tarjeta de usuario inactiva :(");
         }
 
+        }
+    
+    public void consultarAnclajes() {
+        // Recorre el array anclajes y 
+        // Muestra si está libre o el id de la bici anclada 
 
+        int posicion = 0;
+        int numeroAnclaje = 0;
 
+        for (Anclaje anclaje : anclajes()) {
+            numeroAnclaje = posicion + 1;
+            if (anclaje.isOcupado()) {
+                System.out.println("Anclaje " + numeroAnclaje + " " + anclaje.getBici().getId());
+            } else {
+                System.out.println("Anclaje " + numeroAnclaje + " " + " libre");
+            }
+            posicion++;
         }
     }
+  }
 
 
