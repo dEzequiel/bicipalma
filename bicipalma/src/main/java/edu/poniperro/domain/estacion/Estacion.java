@@ -9,16 +9,17 @@ public class Estacion {
     private final String direccion;
     private final Anclajes anclajes;
 
-    public Estacion(int id, String direccion, int numeroAnclajes) {
-        this.id = id;
+    public Estacion(Integer id, String direccion, Integer numeroAnclajes) {
+        this.id = Integer.valueOf(id);
         this.direccion = direccion;
-        this.anclajes = new Anclajes(numeroAnclajes);
+        this.anclajes = new Anclajes(Integer.valueOf(numeroAnclajes));
     }
 
     public int getId() {
-        return Integer.valueOf(id);
+        return Integer.valueOf(this.id);
     }
-    
+
+    // Stupid method just for debugging with wrapper
     public String getDireccion() {
         return this.direccion;
     }
@@ -32,9 +33,10 @@ public class Estacion {
     }
 
     public void consultarEstacion() {
-        System.out.print("id: " + getId() + " estacion: " + getDireccion() + " anclajes: " + numAnclajes());
+        System.out.print("id: " + Integer.toString(this.id) + " estacion: " + getDireccion()+ " anclajes: " + toString());
     }
 
+    // Stay with primitive data type because of arithmetic operations.
     public int anclajesLibres() {
         int numAnclajesLibres = 0;
 
@@ -49,9 +51,9 @@ public class Estacion {
                             + " anclada en el anclaje " + numeroAnclaje);
     }
 
-    public void mostrarBicicleta(Movil bicicleta, int numeroAnclaje) {
+    public void mostrarBicicleta(Movil bicicleta, Integer numeroAnclaje) {
         System.out.println("bicicleta retirada: " + bicicleta.getId() 
-        + " del anclaje: " + numeroAnclaje);
+        + " del anclaje: " + Integer.valueOf(numeroAnclaje));
     }
 
     public void anclarBicicleta(Movil bicicleta) {
@@ -110,6 +112,11 @@ public class Estacion {
             }
             posicion++;
         }
+    }
+
+    public static void main(String [] args) {
+        Estacion estacion = new Estacion(1, "Manacor", 3);
+        estacion.consultarEstacion();
     }
   }
 
