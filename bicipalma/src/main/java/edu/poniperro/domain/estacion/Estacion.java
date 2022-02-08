@@ -32,7 +32,7 @@ public class Estacion {
     }
 
     public void consultarEstacion() {
-        System.out.print(this);
+        System.out.print("id: " + getId() + " estacion: " + getDireccion() + " anclajes: " + numAnclajes());
     }
 
     public int anclajesLibres() {
