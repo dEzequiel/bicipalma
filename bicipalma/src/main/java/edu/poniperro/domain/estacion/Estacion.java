@@ -46,14 +46,14 @@ public class Estacion {
         return numAnclajesLibres;
     }
 
-    public void mostrarAnclaje(Movil bicicleta, int numeroAnclaje) {
+    public void mostrarAnclaje(Movil bicicleta, Integer numeroAnclaje) {
         System.out.println("bicicleta " + bicicleta.getId() 
-                            + " anclada en el anclaje " + numeroAnclaje);
+                            + " anclada en el anclaje " + Integer.toString(numeroAnclaje));
     }
 
     public void mostrarBicicleta(Movil bicicleta, Integer numeroAnclaje) {
         System.out.println("bicicleta retirada: " + bicicleta.getId() 
-        + " del anclaje: " + Integer.valueOf(numeroAnclaje));
+        + " del anclaje: " + Integer.toString(numeroAnclaje));
     }
 
     public void anclarBicicleta(Movil bicicleta) {
