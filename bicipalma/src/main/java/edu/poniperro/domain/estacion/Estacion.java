@@ -1,5 +1,7 @@
 package edu.poniperro.domain.estacion;
 
+import java.util.Arrays;
+
 import edu.poniperro.domain.bicicleta.Movil;
 import edu.poniperro.domain.tarjetaUsuario.Autenticacion;
 
@@ -16,7 +18,7 @@ public class Estacion {
     }
 
     public int getId() {
-        return Integer.valueOf(this.id);
+        return this.id;
     }
 
     // Stupid method just for debugging with wrapper
@@ -36,14 +38,16 @@ public class Estacion {
         System.out.print("id: " + Integer.toString(this.id) + " estacion: " + getDireccion()+ " anclajes: " + toString());
     }
 
-    // Stay with primitive data type because of arithmetic operations.
-    public int anclajesLibres() {
-        int numAnclajesLibres = 0;
+    public long anclajesLibres() {
 
-        for (Anclaje anclaje : anclajes()) {
-            numAnclajesLibres = anclaje.isOcupado()? numAnclajesLibres: ++numAnclajesLibres;
-        }
-        return numAnclajesLibres;
+        // STREAMS are use for doing aggregate operations on data elements.
+        // otherwise COLLECTIONS are use for store data.
+
+        // STREAMS pull data from a source and pass them operations in each element.
+        // STREAMS iterate inside collections from you, external iteration vs internal iteration.
+        // STREAMS can compute in parallel
+        // default method called count() that returns a long value indicating the number of matching items in the stream.
+        return Arrays.stream(anclajes()).filter(a -> !a.isOcupado()).count(); 
     }
 
     public void mostrarAnclaje(Movil bicicleta, Integer numeroAnclaje) {
@@ -70,8 +74,8 @@ public class Estacion {
                 posicion++;
             }
             numeroAnclaje++;
-        }
     }
+    
 
     public boolean leerTarjetaUsuario(Autenticacion tarjetaUsuario) {
         return tarjetaUsuario.isActivada();
