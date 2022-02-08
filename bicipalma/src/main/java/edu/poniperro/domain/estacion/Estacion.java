@@ -79,7 +79,7 @@ public class Estacion {
 
     public void retirarBicicleta(Autenticacion tarjetaUsuario) {
         if (leerTarjetaUsuario(tarjetaUsuario)) {
-            boolean biciRetirada = false;
+            Boolean biciRetirada = Boolean.FALSE;
 
             int posicion = anclajes.seleccionarAnclaje();
 			int numeroAnclaje = posicion + 1;
@@ -88,7 +88,7 @@ public class Estacion {
             if (anclajes.isAnclajeOcupado(posicion)) { // leer anclaje
                 mostrarBicicleta(anclajes.getBiciAt(posicion), numeroAnclaje);
                 anclajes.liberarAnclaje(posicion); // set anclaje
-                biciRetirada = true;
+                biciRetirada = Boolean.TRUE;
             } else; }
         else {
             System.out.println("Tarjeta de usuario inactiva :(");
@@ -97,8 +97,6 @@ public class Estacion {
         }
     
     public void consultarAnclajes() {
-        // Recorre el array anclajes y 
-        // Muestra si está libre o el id de la bici anclada 
 
         int posicion = 0;
         int numeroAnclaje = 0;
@@ -112,11 +110,6 @@ public class Estacion {
             }
             posicion++;
         }
-    }
-
-    public static void main(String [] args) {
-        Estacion estacion = new Estacion(1, "Manacor", 3);
-        estacion.consultarEstacion();
     }
   }
 
