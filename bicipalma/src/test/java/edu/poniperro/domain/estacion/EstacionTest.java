@@ -9,12 +9,25 @@ import edu.poniperro.domain.estacion.Estacion;
 public class EstacionTest {
 
     @Test
-    public void checkingAnclajesLibres() {
-        Anclajes anclajes = new Anclajes(3);
-        Bicicleta bici = new Bicicleta(1);
-        Estacion estacion = new Estacion(1, "manacor", 3);
-        anclajes.ocuparAnclaje(1, bici);
+    public void creacionEstacion() {
+        Estacion estacion = new Estacion(1, "Manacor", 3);
+        assertEquals(1, estacion.getId());
+        assertEquals("Manacor", estacion.getDireccion());
+        assertEquals(3, estacion.numAnclajes());
+    }
 
-        assertEquals(3, estacion.anclajesLibres());
+    @Test
+    public void checkAnclajesLongitud() {
+        Estacion estacion = new Estacion(1, "Manacor", 3);
+        assertEquals(3, estacion.numAnclajes());
+    }
+    
+    @Test
+    public void consultarAnclajesLibres() {
+        Estacion estacion = new Estacion(1, "Manacor", 3);
+        Bicicleta bici = new Bicicleta(1);
+        estacion.anclarBicicleta(bici);
+
+        assertEquals(2, estacion.anclajesLibres());
     }
 }
