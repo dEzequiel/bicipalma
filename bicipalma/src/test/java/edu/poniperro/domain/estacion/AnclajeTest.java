@@ -30,6 +30,16 @@ public class AnclajeTest {
 
     }
 
+    @Test
+    public void anclarBici() {
+        Anclaje anclajeTest = new Anclaje();
+        Bicicleta bici = new Bicicleta(1);
+
+        anclajeTest.anclarBici(bici);
+
+        assertEquals(true, anclajeTest.isOcupado());
+    }
+
     @Test 
     public void getBici() {
         Anclaje anclajeTest = new Anclaje();
