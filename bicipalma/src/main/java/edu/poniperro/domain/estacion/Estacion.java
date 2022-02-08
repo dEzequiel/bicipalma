@@ -1,6 +1,8 @@
 package edu.poniperro.domain.estacion;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.Optional;
 
 import edu.poniperro.domain.bicicleta.Movil;
 import edu.poniperro.domain.tarjetaUsuario.Autenticacion;
@@ -46,7 +48,7 @@ public class Estacion {
         // STREAMS pull data from a source and pass them operations in each element.
         // STREAMS iterate inside collections from you, external iteration vs internal iteration.
         // STREAMS can compute in parallel
-        // default method called count() that returns a long value indicating the number of matching items in the stream.
+        //default method called count() that returns a long value indicating the number of matching items in the stream.
         return Arrays.stream(anclajes()).filter(a -> !a.isOcupado()).count(); 
     }
 
@@ -62,20 +64,15 @@ public class Estacion {
 
     public void anclarBicicleta(Movil bicicleta) {
 
-        int posicion = 0;
-        int numeroAnclaje = 1;
+        Optional<Anclaje> anclajeLibre = Arrays.stream(anclajes()).filter(a -> !a.isOcupado()).findAny();
 
-        for(Anclaje anclaje : anclajes()) {
-            if(!anclaje.isOcupado()) {
-                anclajes.ocuparAnclaje(posicion, bicicleta);
-                mostrarAnclaje(bicicleta, numeroAnclaje);
-                break;
-            } else {
-                posicion++;
-            }
-            numeroAnclaje++;
-    }
-    
+        // Iterate over Optional element, if element is present in hole, get that hole and apply a method.
+        if (anclajeLibre.isPresent()) {
+            anclajeLibre.get().anclarBici(bicicleta);
+        } else {
+            System.out.println("No existen anclajes disponibles para bici " + bicicleta);
+        }
+}
 
     public boolean leerTarjetaUsuario(Autenticacion tarjetaUsuario) {
         return tarjetaUsuario.isActivada();
