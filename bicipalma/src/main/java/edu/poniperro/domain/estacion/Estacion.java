@@ -5,7 +5,7 @@ import edu.poniperro.domain.tarjetaUsuario.Autenticacion;
 
 public class Estacion {
     
-    private final int id;
+    private final Integer id;
     private final String direccion;
     private final Anclajes anclajes;
 
@@ -16,7 +16,7 @@ public class Estacion {
     }
 
     public int getId() {
-        return this.id;
+        return Integer.valueOf(id);
     }
     
     public String getDireccion() {
