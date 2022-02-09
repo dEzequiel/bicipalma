@@ -56,9 +56,8 @@ public class Estacion {
                             + " anclada en el anclaje " + Integer.toString(numeroAnclaje));
     }
 
-    public void mostrarBicicleta(Movil bicicleta, Integer numeroAnclaje) {
-        System.out.println("bicicleta retirada: " + bicicleta.getId() 
-        + " del anclaje: " + Integer.toString(numeroAnclaje));
+    public void mostrarBicicleta(Movil bicicleta) {
+        System.out.println("bicicleta retirada: " + bicicleta.getId());
     }
 
     public void anclarBicicleta(Movil bicicleta) {
@@ -79,22 +78,21 @@ public class Estacion {
 
     public void retirarBicicleta(Autenticacion tarjetaUsuario) {
         if (leerTarjetaUsuario(tarjetaUsuario)) {
-            Boolean biciRetirada = Boolean.FALSE;
-
-            int posicion = anclajes.seleccionarAnclaje();
-			int numeroAnclaje = posicion + 1;
+            // :: is used for method reference, calling object
+            Optional<Anclaje> anclajesOcupados = Arrays.stream(anclajes()).filter(Anclaje::isOcupado).findAny();
 
 
-            if (anclajes.isAnclajeOcupado(posicion)) { // leer anclaje
-                mostrarBicicleta(anclajes.getBiciAt(posicion), numeroAnclaje);
-                anclajes.liberarAnclaje(posicion); // set anclaje
-                biciRetirada = Boolean.TRUE;
-            } else; }
+            if (anclajesOcupados.isPresent()) { // leer anclaje
+                mostrarBicicleta(anclajesOcupados.get().getBici());
+                anclajesOcupados.get().liberarBici();
+            } else {
+                System.out.println("No hay bicicletas");
+            }
+        }
         else {
             System.out.println("Tarjeta de usuario inactiva :(");
         }
-
-        }
+    }
     
     public void consultarAnclajes() {
 
