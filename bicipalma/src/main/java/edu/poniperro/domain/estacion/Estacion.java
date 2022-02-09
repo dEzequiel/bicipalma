@@ -1,24 +1,28 @@
 package edu.poniperro.domain.estacion;
 
+import java.util.Arrays;
+import java.util.Optional;
+
 import edu.poniperro.domain.bicicleta.Movil;
 import edu.poniperro.domain.tarjetaUsuario.Autenticacion;
 
 public class Estacion {
     
-    private final int id;
+    private final Integer id;
     private final String direccion;
     private final Anclajes anclajes;
 
-    public Estacion(int id, String direccion, int numeroAnclajes) {
-        this.id = id;
+    public Estacion(Integer id, String direccion, Integer numeroAnclajes) {
+        this.id = Integer.valueOf(id);
         this.direccion = direccion;
-        this.anclajes = new Anclajes(numeroAnclajes);
+        this.anclajes = new Anclajes(Integer.valueOf(numeroAnclajes));
     }
 
     public int getId() {
         return this.id;
     }
-    
+
+    // Stupid method just for debugging with wrapper
     public String getDireccion() {
         return this.direccion;
     }
@@ -32,44 +36,41 @@ public class Estacion {
     }
 
     public void consultarEstacion() {
-        System.out.print("id: " + getId() + " estacion: " + getDireccion() + " anclajes: " + numAnclajes());
+        System.out.print("id: " + Integer.toString(this.id) + " estacion: " + getDireccion()+ " anclajes: " + toString());
     }
 
-    public int anclajesLibres() {
-        int numAnclajesLibres = 0;
+    public long anclajesLibres() {
 
-        for (Anclaje anclaje : anclajes()) {
-            numAnclajesLibres = anclaje.isOcupado()? numAnclajesLibres: ++numAnclajesLibres;
-        }
-        return numAnclajesLibres;
+        // STREAMS are use for doing aggregate operations on data elements.
+        // otherwise COLLECTIONS are use for store data.
+
+        // STREAMS pull data from a source and pass them operations in each element.
+        // STREAMS iterate inside collections from you, external iteration vs internal iteration.
+        // STREAMS can compute in parallel
+        //default method called count() that returns a long value indicating the number of matching items in the stream.
+        return Arrays.stream(anclajes()).filter(a -> !a.isOcupado()).count(); 
     }
 
-    public void mostrarAnclaje(Movil bicicleta, int numeroAnclaje) {
+    public void mostrarAnclaje(Movil bicicleta, Integer numeroAnclaje) {
         System.out.println("bicicleta " + bicicleta.getId() 
-                            + " anclada en el anclaje " + numeroAnclaje);
+                            + " anclada en el anclaje " + Integer.toString(numeroAnclaje));
     }
 
-    public void mostrarBicicleta(Movil bicicleta, int numeroAnclaje) {
-        System.out.println("bicicleta retirada: " + bicicleta.getId() 
-        + " del anclaje: " + numeroAnclaje);
+    public void mostrarBicicleta(Movil bicicleta) {
+        System.out.println("bicicleta retirada: " + bicicleta.getId());
     }
 
     public void anclarBicicleta(Movil bicicleta) {
 
-        int posicion = 0;
-        int numeroAnclaje = 1;
+        Optional<Anclaje> anclajeLibre = Arrays.stream(anclajes()).filter(a -> !a.isOcupado()).findAny();
 
-        for(Anclaje anclaje : anclajes()) {
-            if(!anclaje.isOcupado()) {
-                anclajes.ocuparAnclaje(posicion, bicicleta);
-                mostrarAnclaje(bicicleta, numeroAnclaje);
-                break;
-            } else {
-                posicion++;
-            }
-            numeroAnclaje++;
+        // Iterate over Optional element, if element is present in hole, get that hole and apply a method.
+        if (anclajeLibre.isPresent()) {
+            anclajeLibre.get().anclarBici(bicicleta);
+        } else {
+            System.out.println("No existen anclajes disponibles para bici " + bicicleta);
         }
-    }
+}
 
     public boolean leerTarjetaUsuario(Autenticacion tarjetaUsuario) {
         return tarjetaUsuario.isActivada();
@@ -77,39 +78,26 @@ public class Estacion {
 
     public void retirarBicicleta(Autenticacion tarjetaUsuario) {
         if (leerTarjetaUsuario(tarjetaUsuario)) {
-            boolean biciRetirada = false;
-
-            int posicion = anclajes.seleccionarAnclaje();
-			int numeroAnclaje = posicion + 1;
+            // :: is used for method reference, calling objects methods
+            Optional<Anclaje> anclajesOcupados = Arrays.stream(anclajes()).filter(Anclaje::isOcupado).findAny();
 
 
-            if (anclajes.isAnclajeOcupado(posicion)) { // leer anclaje
-                mostrarBicicleta(anclajes.getBiciAt(posicion), numeroAnclaje);
-                anclajes.liberarAnclaje(posicion); // set anclaje
-                biciRetirada = true;
-            } else; }
+            if (anclajesOcupados.isPresent()) { // leer anclaje
+                mostrarBicicleta(anclajesOcupados.get().getBici());
+                anclajesOcupados.get().liberarBici();
+            } else {
+                System.out.println("No hay bicicletas");
+            }
+        }
         else {
             System.out.println("Tarjeta de usuario inactiva :(");
         }
-
-        }
+    }
     
     public void consultarAnclajes() {
-        // Recorre el array anclajes y 
-        // Muestra si está libre o el id de la bici anclada 
 
-        int posicion = 0;
-        int numeroAnclaje = 0;
+        Arrays.stream(anclajes()).map(a -> Optional.ofNullable(a.getBici())).forEach(bici -> System.out.print("Anclaje " + (bici.isPresent()? bici.get(): "libre")));
 
-        for (Anclaje anclaje : anclajes()) {
-            numeroAnclaje = posicion + 1;
-            if (anclaje.isOcupado()) {
-                System.out.println("Anclaje " + numeroAnclaje + " " + anclaje.getBici().getId());
-            } else {
-                System.out.println("Anclaje " + numeroAnclaje + " " + " libre");
-            }
-            posicion++;
-        }
     }
   }
 

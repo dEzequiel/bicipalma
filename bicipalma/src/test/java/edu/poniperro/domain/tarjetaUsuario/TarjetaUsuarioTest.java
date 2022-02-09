@@ -2,7 +2,6 @@ package edu.poniperro.domain.tarjetaUsuario;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import edu.poniperro.domain.tarjetaUsuario.TarjetaUsuario;
 
 public class TarjetaUsuarioTest {
     

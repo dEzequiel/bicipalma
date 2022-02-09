@@ -1,7 +1,9 @@
 package edu.poniperro.domain.bicicleta;
 
 public class Bicicleta implements Movil{
-    private final int id;
+
+    // Replace primitives data types, with Object. Objects are wrappers.
+    private final Integer id;
 
     public Bicicleta(int id) {
         this.id = id;
@@ -9,13 +11,15 @@ public class Bicicleta implements Movil{
 
     @Override
     public int getId(){
-        return this.id;
+        // Returns the int primitive value of Integer Object.
+        return this.id.intValue();
     }
 
     @Override
     public
     String toString() {
-        return Integer.toString(getId());
+        // Integer Object has a toString() built-in method.
+        return this.id.toString();
     }
 
 }

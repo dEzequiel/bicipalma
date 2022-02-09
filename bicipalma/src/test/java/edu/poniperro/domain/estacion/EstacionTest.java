@@ -3,8 +3,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import edu.poniperro.domain.bicicleta.Bicicleta;
-import edu.poniperro.domain.estacion.Anclajes;
-import edu.poniperro.domain.estacion.Estacion;
+
 import edu.poniperro.domain.tarjetaUsuario.TarjetaUsuario;
 
 public class EstacionTest {
