@@ -78,7 +78,7 @@ public class Estacion {
 
     public void retirarBicicleta(Autenticacion tarjetaUsuario) {
         if (leerTarjetaUsuario(tarjetaUsuario)) {
-            // :: is used for method reference, calling object
+            // :: is used for method reference, calling objects methods
             Optional<Anclaje> anclajesOcupados = Arrays.stream(anclajes()).filter(Anclaje::isOcupado).findAny();
 
 
@@ -96,18 +96,8 @@ public class Estacion {
     
     public void consultarAnclajes() {
 
-        int posicion = 0;
-        int numeroAnclaje = 0;
+        Arrays.stream(anclajes()).map(a -> Optional.ofNullable(a.getBici())).forEach(bici -> System.out.print("Anclaje " + (bici.isPresent()? bici.get(): "libre")));
 
-        for (Anclaje anclaje : anclajes()) {
-            numeroAnclaje = posicion + 1;
-            if (anclaje.isOcupado()) {
-                System.out.println("Anclaje " + numeroAnclaje + " " + anclaje.getBici().getId());
-            } else {
-                System.out.println("Anclaje " + numeroAnclaje + " " + " libre");
-            }
-            posicion++;
-        }
     }
   }
 

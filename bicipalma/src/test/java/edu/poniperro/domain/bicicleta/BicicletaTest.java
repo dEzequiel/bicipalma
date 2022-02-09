@@ -2,7 +2,6 @@ package edu.poniperro.domain.bicicleta;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import edu.poniperro.domain.bicicleta.Bicicleta;
 
 public class BicicletaTest {
     
